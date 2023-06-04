@@ -7,12 +7,14 @@ export default function AuthForm({ mode }: Props) {
     title: "Sign In",
     href: "/sign-in",
     text: "Have an account?",
+    autofill: "current-password",
   };
 
   const signUp = {
     title: "Create account",
     href: "/sign-up",
     text: "No account?",
+    autofill: "new-password",
   };
 
   const buttProps = mode == "In" ? signIn : signUp;
@@ -26,7 +28,7 @@ export default function AuthForm({ mode }: Props) {
       <form method="post" class="flex flex-col space-y-4 min-w-0">
 
         <input type="email" name="email" placeholder="Email" class="form-control" />
-        <input type="password" name="password" placeholder="Password" class="form-control" />
+        <input type="password" name="password" placeholder="Password" class="form-control" autocomplete={buttProps.autofill} />
        
         <input type="submit" value={buttProps.title} class="btn btn-primary" />
        

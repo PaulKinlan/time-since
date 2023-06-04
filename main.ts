@@ -12,6 +12,7 @@ import twindPlugin from "$fresh/plugins/twind.ts";
 import twindConfig from "./twind.config.ts";
 
 supabase.auth.onAuthStateChange(async (event, session) => {
+  console.log(event, session);
   if (event == "SIGNED_IN" || event == "TOKEN_REFRESHED" && session != null) {
     const { access_token, expires_in } = session!;
     const stringified = JSON.stringify(session);
