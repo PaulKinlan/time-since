@@ -17,7 +17,7 @@ export default function Home(props: PageProps<UserSession>) {
       <Head>
         <title>Time since</title>
       </Head>
-      <Header></Header>
+      <Header ></Header>
       <div class="p-4 mx-auto max-w-screen-md">
         <p class="my-6">
           {props.data.email ? `Hello, ${props.data.email}!` : <p>Hello, stranger! <a href="/sign-in">Sign in</a> or <a href="/sign-up">sign up</a> to get started.</p>}

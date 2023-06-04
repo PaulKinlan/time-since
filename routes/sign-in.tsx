@@ -10,31 +10,34 @@ export type Data = {
 
 export const handler: Handlers = {
   GET(req, ctx) {
-    const email = ctx.state.session.get("email");
-    console.log(ctx.state.session.get("email"));
-
-    return ctx.render({ email });
+  
+    return ctx.render();
   },
   async POST(req, ctx) {
     const form = await req.formData();
     const email = form.get("email");
     const password = form.get("password");
 
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { data: { user, session }, error } = await supabase.auth.signInWithPassword({
       email: String(email),
       password: String(password),
     });
-
-    console.log(data, error )
 
     if (error != null) {
       // We have an error
       // It might be that they are not yet confirmed
     }
     else {
-      console.log("USER", data)
+      console.log("USER", user)
       ctx.state.session.set("email", user.email);
     }
+
+    const headers = new Headers();
+    headers.set("location", "/"); 
+    return new Response(null, {
+      status: 303, // See Other
+      headers,
+    });
   }
 }
 
