@@ -22,7 +22,7 @@ export default function Home() {
         <title>Sign In</title>
       </Head>
       <div class="p-4 mx-auto max-w-screen-md">
-       <AuthForm mode="In">
+        <AuthForm mode="In" />
       </div>
     </>
   );

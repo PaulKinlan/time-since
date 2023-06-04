@@ -10,7 +10,7 @@ export default function Home() {
         <title>Sign Up</title>
       </Head>
       <div class="p-4 mx-auto max-w-screen-md">
-        <AuthForm mode="Up">
+        <AuthForm mode="Up" />
       </div>
     </>
   );

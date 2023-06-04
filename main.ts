@@ -4,7 +4,6 @@
 /// <reference lib="dom.asynciterable" />
 /// <reference lib="deno.ns" />
 
-
 import { supabase } from "lib/supabase.ts";
 import { start } from "$fresh/server.ts";
 import manifest from "./fresh.gen.ts";
