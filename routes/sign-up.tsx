@@ -1,6 +1,6 @@
 import { Head } from "$fresh/runtime.ts";
 
-import { AuthForm } from "../islands/AuthForm.tsx";
+import AuthForm from "../islands/AuthForm.tsx";
 
 export default function Home() {
 

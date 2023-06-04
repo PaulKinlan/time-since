@@ -1,6 +1,6 @@
 import { Head } from "$fresh/runtime.ts";
 import { getCookies } from "std/http/cookie.ts";
-import { AuthForm } from "../islands/AuthForm.tsx";
+import AuthForm from "../islands/AuthForm.tsx";
 
 export type Data = {
   isAllowed: boolean;

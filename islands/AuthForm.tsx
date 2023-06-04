@@ -2,7 +2,7 @@ type Props = {
   mode: "In" | "Up";
 };
 
-export function AuthForm({ mode }: Props) {
+export default function AuthForm({ mode }: Props) {
   const signIn = {
     title: "Sign In",
     href: "/sign-in",
