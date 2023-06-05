@@ -1,11 +1,8 @@
-import LemonIcon from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/lemon-2.tsx";
-import AuthStateButton from "./AuthStateButton.tsx";
+import AuthStateButton from "components/AuthStateButton.tsx";
 
-type Props = {
-  active: string;
-};
+export { Header };
 
-export default function Header({ active }: Props) {
+export default function Header() {
   const menus = [
     { name: "Home", href: "/" }
   ];
@@ -23,13 +20,13 @@ export default function Header({ active }: Props) {
             <a
               href={menu.href}
               class={"text-gray-500 hover:text-gray-700 py-1 border-gray-500" +
-                (menu.href === active ? " font-bold border-b-2" : "")}
+                (menu.href === "" ? " font-bold border-b-2" : "")}
             >
               {menu.name}
             </a>
           </li>
         ))}
-        <li><AuthStateButton signed="In"/></li>
+        <li><AuthStateButton /></li>
       </ul>
     </div>
   );

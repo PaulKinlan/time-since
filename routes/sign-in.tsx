@@ -1,8 +1,9 @@
 import { Head } from "$fresh/runtime.ts";
-import { getCookies } from "std/http/cookie.ts";
+import { Handlers } from "$fresh/server.ts";
+
 import AuthForm from "../islands/AuthForm.tsx";
 import { supabase } from "lib/supabase.ts";
-
+import { signed } from "lib/auth.ts";
 
 export type Data = {
   isAllowed: boolean;
@@ -10,7 +11,6 @@ export type Data = {
 
 export const handler: Handlers = {
   GET(req, ctx) {
-  
     return ctx.render();
   },
   async POST(req, ctx) {
@@ -24,11 +24,12 @@ export const handler: Handlers = {
     });
 
     if (error != null) {
+      console.error(error);
       // We have an error
       // It might be that they are not yet confirmed
     }
     else {
-      console.log("USER", user)
+      signed.value = { email: user?.email, signed: "In" };
       ctx.state.session.set("email", user.email);
     }
 

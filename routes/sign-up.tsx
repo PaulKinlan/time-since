@@ -1,7 +1,10 @@
 import { Head } from "$fresh/runtime.ts";
+import { Handlers } from "$fresh/server.ts";
 
 import AuthForm from "../islands/AuthForm.tsx";
 import { supabase } from "lib/supabase.ts";
+
+import { signed } from "lib/auth.ts";
 
 export const handler: Handlers = {
   async GET(req, ctx) {
@@ -26,6 +29,7 @@ export const handler: Handlers = {
     if (user && !session) {
       // TODO: A user has been created but not yet confirmed their e-mail address.
       // We could add a flag for the frontend to remind the user.
+      signed.value = { email: user?.email, signed: "In" };
       ctx.state.session.set("email", user.email);
     }
 
@@ -53,7 +57,6 @@ export default function Home() {
       <div class="p-4 mx-auto max-w-screen-md">
         <AuthForm mode="Up" />
         <p>If you already have an account, <a href="/sign-in">Sign in</a>.</p>
-     
       </div>
     </>
   );
